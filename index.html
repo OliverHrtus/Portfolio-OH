@@ -41,8 +41,6 @@
             overflow-x: hidden;
         }
 
-
-        
         nav {
             position: fixed;
             top: 0;
@@ -103,8 +101,6 @@
             background: var(--accent);
             border-radius: 50%;
         }
-
-
 
         #hero {
             min-height: 100vh;
@@ -274,10 +270,6 @@
             color: var(--accent);
         }
 
-        .t-comment {
-            color: #444;
-        }
-
         .t-key {
             color: var(--accent2);
         }
@@ -289,27 +281,12 @@
         .t-str {
             color: #ffd380;
         }
-
-        .t-blank {
-            height: 26px;
-        }
-
+        
         .t-indent {
             display: inline-block;
             width: 64px;
         }
 
-        .t-cursor {
-            display: inline-block;
-            width: 8px;
-            height: 13px;
-            background: var(--accent);
-            vertical-align: text-bottom;
-            animation: blink 1s step-end infinite;
-        }
-
-
-        
         section {
             padding: 128px 64px;
         }
@@ -333,7 +310,6 @@
             color: transparent;
             -webkit-text-stroke: 1.5px rgba(232, 232, 232, 0.25);
         }
-
        
         #about {
             border-top: 1px solid var(--border);
@@ -387,7 +363,6 @@
             text-transform: uppercase;
         }
 
-        
         #skills {
             border-top: 1px solid var(--border);
         }
@@ -408,26 +383,9 @@
             overflow: hidden;
         }
 
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.35s ease;
-        }
-
         .skill-card:hover {
             border-color: #2e2e2e;
             transform: translateY(-4px);
-        }
-
-        .skill-card:hover::before {
-            transform: scaleX(1);
         }
 
         .skill-icon {
@@ -484,15 +442,6 @@
             overflow: hidden;
         }
 
-        .github-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(200, 245, 66, 0.04), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
         .github-cta:hover {
             border-color: rgba(200, 245, 66, 0.4);
             transform: translateY(-3px);
@@ -513,7 +462,6 @@
             width: 42px;
             height: 42px;
             color: var(--text);
-            flex-shrink: 0;
         }
 
         .github-cta-handle {
@@ -527,14 +475,12 @@
         .github-cta-sub {
             font-size: 13px;
             color: var(--muted);
-            line-height: 1.6;
         }
 
         .github-cta-arrow {
             font-size: 40px;
             color: var(--muted);
             transition: color 0.2s, transform 0.2s;
-            line-height: 1;
         }
 
         .github-cta:hover .github-cta-arrow {
@@ -542,24 +488,9 @@
             transform: translate(4px, -4px);
         }
 
-        
-        #experience {
-            border-top: 1px solid var(--border);
-        }
-
         .timeline {
             position: relative;
             padding-left: 40px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
         }
 
         .timeline-item {
@@ -567,16 +498,8 @@
             padding: 0 0 56px 32px;
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -40px;
-            top: 5px;
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 10px rgba(200, 245, 66, 0.5);
+        #experience {
+            border-top: 1px solid var(--border);
         }
 
         .exp-period {
@@ -613,7 +536,6 @@
             font-family: var(--font-display);
             font-size: 80px;
             font-weight: 800;
-            line-height: 0.95;
             margin-bottom: 32px;
         }
 
@@ -626,7 +548,6 @@
             font-size: 13px;
             color: var(--muted);
             margin-bottom: 48px;
-            line-height: 1.8;
         }
 
         .contact-links {
@@ -678,8 +599,6 @@
 </head>
 
 <body>
-
-    
     <nav>
         <a class="nav-logo" href="#">OH<span>.</span></a>
         <ul class="nav-links">
@@ -694,7 +613,6 @@
             Dostupný pre prácu
         </div>
     </nav>
-
     
     <section id="hero">
         <div class="hero-grid-lines"></div>
@@ -728,29 +646,22 @@
                 </div>
                 <div class="terminal-body">
                     <div><span class="t-prompt">❯ </span>node profile.js</div>
-                    <div class="t-blank"></div>
-                    <div><span class="t-comment">// Načítavam Oliver Hrtus...</span></div>
-                    <div class="t-blank"></div>
                     <div><span class="t-key">name</span>: <span class="t-str">'Oliver Hrtus'</span>,</div>
                     <div><span class="t-key">role</span>: <span class="t-str">'Software Engineer'</span>,</div>
-                    <div><span class="t-key">exp</span>: <span class="t-val">2</span>, <span class="t-comment">//
-                            years</span></div>
+                    <div><span class="t-key">exp</span>: <span class="t-val">2</span>,</div>
                     <div><span class="t-key">status</span>: <span class="t-str">'available'</span>,</div>
                     <div><span class="t-key">loc</span>: <span class="t-str">'Žilina, SK'</span></div>
                     <div class="t-blank"></div>
-                    <div><span class="t-prompt">❯ </span><span class="t-cursor"></span></div>
                 </div>
             </div>
         </div>
     </section>
-
     
     <section id="about">
         <div class="about-grid">
             <div class="about-text">
                 <div class="section-label">//O mne</div>
                 <h2 class="section-title">Tvorba softvéru<br><span>s presnosťou</span></h2>
-
             </div>
             <div class="stats-grid">
                 <div class="stat-item">
@@ -764,7 +675,6 @@
             </div>
         </div>
     </section>
-
     
     <section id="skills">
         <div class="section-label">//Zručnosti</div>
@@ -773,8 +683,7 @@
             <div class="skill-card">
                 <div class="skill-icon">⚡</div>
                 <div class="skill-name">Frontend</div>
-                <div class="skill-desc">Frontend developer zručný so stavianím, user-friendly webové rozhrania
-                    pomocou HTML, CSS, JavaScript.</div>
+                <div class="skill-desc">Frontend developer zručný so stavianím, user-friendly webové rozhrania pomocou HTML, CSS, JavaScript.</div>
                 <div class="skill-tags">
                     <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
                 </div>
@@ -794,7 +703,6 @@
             </div>
         </div>
     </section>
-
     
     <section id="projects">
         <div class="section-label">//projekty</div>
@@ -813,7 +721,6 @@
             <div class="github-cta-arrow">↗</div>
         </a>
     </section>
-
     
     <section id="experience">
         <div class="section-label">//skúsenosti</div>
@@ -844,7 +751,7 @@
             </div>
         </div>
     </section>
-    
+
     <footer>
         <span>© 2026 Oliver Hrtus. Navrhnuté a postavené od začiatku.</span>
         <span>Žilina, SK · <a href="mailto:hrtusolo@gmail.com">hrtusolo@gmail.com</a></span>
