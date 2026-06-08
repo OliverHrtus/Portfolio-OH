@@ -50,7 +50,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 64px;
+            padding: 20px 64px;
             background: rgba(10, 10, 10, 0.88);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
@@ -62,6 +62,7 @@
             font-size: 19px;
             color: var(--text);
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .nav-logo span {
@@ -93,6 +94,7 @@
             gap: 8px;
             font-size: 11px;
             color: var(--muted);
+            flex-shrink: 0;
         }
 
         .status-dot {
@@ -100,6 +102,70 @@
             height: 7px;
             background: var(--accent);
             border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .nav-toggle.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .nav-drawer {
+            display: none;
+            position: fixed;
+            top: 61px;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            background: rgba(10, 10, 10, 0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 32px;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .nav-drawer.open {
+            display: flex;
+        }
+
+        .nav-drawer a {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-drawer a:hover {
+            color: var(--accent);
         }
 
         #hero {
@@ -110,6 +176,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            gap: 48px;
         }
 
         .hero-grid-lines {
@@ -130,7 +197,7 @@
         .hero-name {
             font-family: var(--font-display);
             font-weight: 800;
-            font-size: 80px;
+            font-size: clamp(48px, 7vw, 80px);
             line-height: 0.95;
             margin-bottom: 19px;
             animation: fadeUp 0.6s 0.35s both;
@@ -153,6 +220,7 @@
         .hero-ctas {
             display: flex;
             gap: 16px;
+            flex-wrap: wrap;
             animation: fadeUp 0.6s 0.65s both;
         }
 
@@ -267,11 +335,6 @@
         .t-str {
             color: #ffd380;
         }
-        
-        .t-indent {
-            display: inline-block;
-            width: 64px;
-        }
 
         section {
             padding: 128px 64px;
@@ -286,7 +349,7 @@
 
         .section-title {
             font-family: var(--font-display);
-            font-size: 48px;
+            font-size: clamp(32px, 5vw, 48px);
             font-weight: 800;
             line-height: 1.05;
             margin-bottom: 48px;
@@ -296,7 +359,7 @@
             color: transparent;
             -webkit-text-stroke: 1.5px rgba(232, 232, 232, 0.25);
         }
-       
+
         #about {
             border-top: 1px solid var(--border);
         }
@@ -336,7 +399,7 @@
 
         .stat-num {
             font-family: var(--font-display);
-            font-size: 45px;
+            font-size: clamp(32px, 4vw, 45px);
             font-weight: 800;
             color: var(--accent);
             line-height: 1;
@@ -365,8 +428,6 @@
             border-radius: 8px;
             padding: 32px;
             transition: border-color 0.2s, transform 0.2s;
-            position: relative;
-            overflow: hidden;
         }
 
         .skill-card:hover {
@@ -408,7 +469,6 @@
             border: 1px solid rgba(200, 245, 66, 0.15);
         }
 
-        
         #projects {
             border-top: 1px solid var(--border);
         }
@@ -424,18 +484,12 @@
             text-decoration: none;
             color: var(--text);
             transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
-            position: relative;
-            overflow: hidden;
         }
 
         .github-cta:hover {
             border-color: rgba(200, 245, 66, 0.4);
             transform: translateY(-3px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .github-cta:hover::before {
-            opacity: 1;
         }
 
         .github-cta-left {
@@ -448,11 +502,12 @@
             width: 42px;
             height: 42px;
             color: var(--text);
+            flex-shrink: 0;
         }
 
         .github-cta-handle {
             font-family: var(--font-display);
-            font-size: 24px;
+            font-size: clamp(16px, 3vw, 24px);
             font-weight: 700;
             margin-bottom: 6px;
             color: var(--accent);
@@ -474,6 +529,10 @@
             transform: translate(4px, -4px);
         }
 
+        #experience {
+            border-top: 1px solid var(--border);
+        }
+
         .timeline {
             position: relative;
             padding-left: 40px;
@@ -482,10 +541,6 @@
         .timeline-item {
             position: relative;
             padding: 0 0 56px 32px;
-        }
-
-        #experience {
-            border-top: 1px solid var(--border);
         }
 
         .exp-period {
@@ -507,7 +562,6 @@
             margin-bottom: 16px;
         }
 
-        
         #contact {
             border-top: 1px solid var(--border);
             text-align: center;
@@ -520,7 +574,7 @@
 
         .contact-big {
             font-family: var(--font-display);
-            font-size: 80px;
+            font-size: clamp(40px, 8vw, 80px);
             font-weight: 800;
             margin-bottom: 32px;
         }
@@ -562,7 +616,6 @@
             transform: translateY(-2px);
         }
 
-        
         footer {
             border-top: 1px solid var(--border);
             padding: 32px 64px;
@@ -571,6 +624,8 @@
             align-items: center;
             font-size: 11px;
             color: var(--muted);
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         footer a {
@@ -580,6 +635,160 @@
 
         footer a:hover {
             color: var(--accent);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 32px;
+            }
+
+            .nav-links {
+                gap: 24px;
+            }
+
+            .nav-status {
+                display: none;
+            }
+
+            #hero {
+                padding: 0 32px;
+                gap: 32px;
+            }
+
+            section {
+                padding: 96px 32px;
+            }
+
+            footer {
+                padding: 32px 32px;
+            }
+
+            .about-grid {
+                gap: 48px;
+            }
+
+            .skills-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            #hero {
+                grid-template-columns: 1fr;
+                padding: 0 24px;
+                padding-top: 80px;
+                min-height: auto;
+                padding-bottom: 64px;
+                gap: 48px;
+                align-items: start;
+            }
+
+            .hero-left {
+                padding-top: 32px;
+            }
+
+            .hero-right {
+                padding-top: 0;
+            }
+
+            .hero-terminal {
+                max-width: 100%;
+            }
+
+            section {
+                padding: 72px 24px;
+            }
+
+            footer {
+                padding: 28px 24px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .skills-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .github-cta {
+                padding: 28px 24px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .github-cta-arrow {
+                display: none;
+            }
+
+            .contact-big {
+                font-size: clamp(36px, 10vw, 56px);
+            }
+        }
+
+
+        @media (max-width: 480px) {
+            .hero-name {
+                font-size: clamp(40px, 13vw, 64px);
+            }
+
+            .terminal-body {
+                padding: 16px;
+                font-size: 12px;
+            }
+
+            .stat-item {
+                padding: 20px;
+            }
+
+            .skill-card {
+                padding: 24px;
+            }
+
+            .github-cta-left {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
         }
     </style>
 </head>
@@ -598,8 +807,19 @@
             <div class="status-dot"></div>
             Dostupný pre prácu
         </div>
+        <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
-    
+
+    <div class="nav-drawer" id="navDrawer">
+        <a href="#about" onclick="closeMenu()">O mne</a>
+        <a href="#skills" onclick="closeMenu()">Zručnosti</a>
+        <a href="#projects" onclick="closeMenu()">Projekty</a>
+        <a href="#experience" onclick="closeMenu()">Skúsenosti</a>
+        <a href="#contact" onclick="closeMenu()">Kontakt</a>
+    </div>
+
     <section id="hero">
         <div class="hero-grid-lines"></div>
         <div class="hero-left">
@@ -608,8 +828,8 @@
                 <span class="line2">Hrtus</span>
             </h1>
             <p class="hero-desc">
-                Ahoj, ja som Oliver — študent SPŠIT KNM, mám <strong>2 roky praxe</strong> s programovaním a stavbov aplikácií a webov. Zameriavam sa na tvorbu kvalitného, udržateľného kódu.
-               
+                Ahoj, ja som Oliver — študent SPŠIT KNM, mám <strong>2 roky praxe</strong> s programovaním a stavbou
+                aplikácií a webov. Zameriavam sa na tvorbu kvalitného, udržateľného kódu.
             </p>
             <div class="hero-ctas">
                 <a href="#projects" class="btn-primary">View Projects</a>
@@ -631,12 +851,11 @@
                     <div><span class="t-key">exp</span>: <span class="t-val">2</span>,</div>
                     <div><span class="t-key">status</span>: <span class="t-str">'available'</span>,</div>
                     <div><span class="t-key">loc</span>: <span class="t-str">'Žilina, SK'</span></div>
-                    <div class="t-blank"></div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <section id="about">
         <div class="about-grid">
             <div class="about-text">
@@ -655,7 +874,7 @@
             </div>
         </div>
     </section>
-    
+
     <section id="skills">
         <div class="section-label">//Zručnosti</div>
         <h2 class="section-title">S čím <span>pracujem</span></h2>
@@ -663,7 +882,8 @@
             <div class="skill-card">
                 <div class="skill-icon">⚡</div>
                 <div class="skill-name">Frontend</div>
-                <div class="skill-desc">Frontend developer zručný so stavianím, user-friendly webové rozhrania pomocou HTML, CSS, JavaScript.</div>
+                <div class="skill-desc">Frontend developer zručný so stavianím, user-friendly webové rozhrania pomocou
+                    HTML, CSS, JavaScript.</div>
                 <div class="skill-tags">
                     <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
                 </div>
@@ -671,7 +891,8 @@
             <div class="skill-card">
                 <div class="skill-icon">🔧</div>
                 <div class="skill-name">Backend</div>
-                <div class="skill-desc">Uprednostňujem písanie čistého, opakovanovo použiteľného kódu a vytváranie systémov, ktoré sú jednoduché na škálovanie a údržbu v priebehu času.</div>
+                <div class="skill-desc">Uprednostňujem písanie čistého, opakovanovo použiteľného kódu a vytváranie
+                    systémov, ktoré sú jednoduché na škálovanie a údržbu v priebehu času.</div>
                 <div class="skill-tags">
                     <span class="tag">C#</span><span class="tag">Python</span>
                 </div>
@@ -679,11 +900,12 @@
             <div class="skill-card">
                 <div class="skill-icon">🔬</div>
                 <div class="skill-name">Komunikácia</div>
-                <div class="skill-desc">Silné komunikačné zručnosti s schopnosťou jasne vyjadriť nápady a efektívne spolupracovať v tímovej atmosfére.</div>
+                <div class="skill-desc">Silné komunikačné zručnosti s schopnosťou jasne vyjadriť nápady a efektívne
+                    spolupracovať v tímovej atmosfére.</div>
             </div>
         </div>
     </section>
-    
+
     <section id="projects">
         <div class="section-label">//projekty</div>
         <h2 class="section-title">Vybrané <span>práce</span></h2>
@@ -701,7 +923,7 @@
             <div class="github-cta-arrow">↗</div>
         </a>
     </section>
-    
+
     <section id="experience">
         <div class="section-label">//skúsenosti</div>
         <h2 class="section-title">Kde som <span>pracoval</span></h2>
@@ -713,7 +935,7 @@
             </div>
         </div>
     </section>
-    
+
     <section id="contact">
         <div class="contact-inner">
             <div class="section-label">//kontakt</div>
@@ -737,6 +959,18 @@
         <span>Žilina, SK · <a href="mailto:hrtusolo@gmail.com">hrtusolo@gmail.com</a></span>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            const drawer = document.getElementById('navDrawer');
+            const toggle = document.querySelector('.nav-toggle');
+            drawer.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+        function closeMenu() {
+            document.getElementById('navDrawer').classList.remove('open');
+            document.querySelector('.nav-toggle').classList.remove('open');
+        }
+    </script>
 </body>
 
 </html>
